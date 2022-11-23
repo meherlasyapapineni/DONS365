@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
 const UserRoute = require('./routes/userRoutes')
-
+const PostRoute = require('./routes/postsRoutes')
 app.use(express.json());
 
 const uri = "mongodb+srv://anuradha:project123@projectcluster.0s8shtc.mongodb.net/ProjectDB?retryWrites=true&w=majority";
@@ -22,3 +22,4 @@ app.listen(3001, () => {
 });
 
 app.use('/api/user', UserRoute)
+app.use('/api/posts', PostRoute)
