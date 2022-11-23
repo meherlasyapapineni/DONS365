@@ -26,7 +26,7 @@ const PostSchema = new mongoose.Schema(
             required : true,
         },
         // image : {
-        //     type : Buffer,
+        //     data : Buffer,
         //     required : false,
         // },
         sell_status : {

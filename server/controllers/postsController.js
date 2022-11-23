@@ -20,12 +20,11 @@ const createPost = (req, res, next) => {
         item_name : req.body.item_name,
         user : req.body.user,
         description : req.body.description,
-        upload_date : req.body.upload_date,
+        upload_date : Date(),
         sell_status : req.body.sell_status
     })
-    console.log("before saving")
+    // console.log("before saving")
     post.save()
-    console.log("after saving")
     .then(response => {
         res.json({ response })
     })
@@ -60,8 +59,19 @@ const updatePost = (req, res, next) => {
 
 // search for a post by title
 const searchByPostTitle = (req, res, next) => {
-    let title = req.body.title
+    let title = req.params.title
     Post.find(title)
+    .then({ response })
+    .catch(error =>{
+        req.json({
+            message: 'An error occurred!'
+        })
+    })
+}
+// search for a category of item
+const searchByCategory = (req, res, next) => {
+    let category = req.params.item_name
+    Post.find(category)
     .then({ response })
     .catch(error =>{
         req.json({
@@ -72,7 +82,7 @@ const searchByPostTitle = (req, res, next) => {
 
 //show the details of a post by id
 const showPost = (req, res, next) => {
-    let postId = req.body.postId
+    let postId = req.params.postId
     Post.findById(postId)
     .then({ response })
     .catch(error =>{
@@ -84,7 +94,7 @@ const showPost = (req, res, next) => {
 
 // delete a post by id
 const deletePost = (req, res, next) => {
-    let postId = req.body.postId
+    let postId = req.params.postId
     Post.findOneAndDelete(postId)
     .then(() => {
         req.json({
@@ -99,5 +109,5 @@ const deletePost = (req, res, next) => {
 }
 
 module.exports = {
-    getPosts, createPost, updatePost, searchByPostTitle, showPost, deletePost
+    getPosts, createPost, updatePost, searchByPostTitle, showPost, deletePost, searchByCategory
 }
