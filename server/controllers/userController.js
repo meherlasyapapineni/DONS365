@@ -122,7 +122,7 @@ const deleteUser = (req, res, next) => {
     User.findOneAndRemove(userId)
     .then(() =>{
         req.json({
-            message: 'User deleted successfully'
+            message: 'Employee deleted successfully'
         })        
     })
     .catch(error =>{

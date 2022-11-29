@@ -21,6 +21,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    
 });
 
 const UserModel = mongoose.model("users", UserSchema)
