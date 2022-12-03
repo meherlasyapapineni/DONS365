@@ -3,6 +3,8 @@ import './css/styles.css';
 
 import useScript from "./useScript"
 
+// This is a new landing page formatted
+
 
 function LandingPage() {
     useScript("https://use.fontawesome.com/releases/v6.1.0/js/all.js");
