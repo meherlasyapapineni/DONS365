@@ -1,8 +1,15 @@
 import React from 'react'
-import './styles.css';
-import '../components/css/styles.css'
+import './css/styles.css';
+
+import useScript from "./useScript"
+
 
 function LandingPage() {
+    useScript("https://use.fontawesome.com/releases/v6.1.0/js/all.js");
+    useScript("https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js");
+    useScript("https://cdn.startbootstrap.com/sb-forms-latest.js");
+
+
   return (
     <div>
         <>

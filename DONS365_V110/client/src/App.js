@@ -13,9 +13,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SignIn />} />
-        <Route path="/buysell" element={<BuyAndSell />} />
-        <Route path="/landing" element={<LandingPage />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/buysell" element={<BuyAndSell />} />
+       
       </Routes>
     </BrowserRouter>
   )
