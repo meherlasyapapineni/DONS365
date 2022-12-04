@@ -1,5 +1,4 @@
 const User = require('../models/Users')
-const bcrypt = require("bcrypt")
 //Show details of users
 
 const getUsers = (req, res, next) => {
