@@ -1,7 +1,70 @@
-import React from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography, MDBIcon } from 'mdb-react-ui-kit';
+import React, { useState, useEffect} from 'react';
+import { MDBCol,MDBDataTable, MDBTable,MDBTableHead,MDBTableBody,MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography, MDBIcon } from 'mdb-react-ui-kit';
+// import { MDBDataTable } from "mdbreact";
+import BasicTable from "./table"
 
 export default function ProfileStatistics() {
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+  // Note: the empty deps array [] means
+  // this useEffect will run once
+  // similar to componentDidMount()
+  useEffect(() => {
+    fetch("https://api.example.com/items")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
+
+
+  const columns = [
+      {
+        Header: "S.No",
+        accessor: "S.No" // accessor is the "key" in the data
+      },
+      {
+        Header: "Item",
+        accessor: "Item"
+      },
+      {
+        Header: "Action",
+        accessor: "Action" // couldnt do button
+      }
+    ];
+const data = [
+      {
+        company: "Alfred",
+        contact: "Maria Anders",
+        country: "Germany"
+      },
+      {
+        company: "Centro comercial Moctezuma",
+        contact: "Francisco Chang",
+        country: "Mexico"
+      },
+      {
+        company: "Ernst Handel",
+        contact: "Roland Mendel	",
+        country: "Austria"
+      }
+    ];
+
+
+
   return (
     <div className="vh-100" style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="container py-5 h-100">
@@ -28,7 +91,7 @@ export default function ProfileStatistics() {
                   <MDBCol sm="3">
                     <MDBCardText>Items</MDBCardText>
                   </MDBCol>
-                  <MDBCol sm="9">
+                  <MDBCol sm="">
                     <MDBCardText className="text-muted">Item name</MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -50,13 +113,23 @@ export default function ProfileStatistics() {
                     <MDBCardText className="text-muted">action to be taken</MDBCardText>
                   </MDBCol>
                 </MDBRow>
+                <MDBRow>
+                  <BasicTable columns={columns} data={data}/>
+              </MDBRow>
               </MDBCardBody>
             </MDBCard>
             </MDBCol>
           </MDBCol>
         </MDBRow>
+
+
+      
+
         
       </MDBContainer>
+
+
+
       
     </div>
   );
