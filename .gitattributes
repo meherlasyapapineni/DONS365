@@ -1,0 +1,2 @@
+dons365_client_repo-main filter=lfs diff=lfs merge=lfs -text
+dons365_server-main filter=lfs diff=lfs merge=lfs -text
