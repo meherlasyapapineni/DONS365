@@ -1,0 +1,16 @@
+.formAddPost {
+
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 8.5rem;
+    margin-right: 2rem;
+}
+  
+.form-group {
+    width: 80%;
+    align-content: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
